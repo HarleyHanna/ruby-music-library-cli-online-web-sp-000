@@ -4,7 +4,7 @@ Bundler.require
 module Concerns
   module Findable
      def find_by_name(name)
-      all.select do |song|
+      all.detect do |song|
         song.name == name
       end
     end
@@ -43,8 +43,9 @@ class Song
   end
   
   def self.create(name)
-    self.new(name).save
-    self
+    obj = self.new(name)
+    obj.save
+    obj
   end
   
   def self.destroy_all
@@ -72,7 +73,7 @@ class Song
   end
   
   def self.find_by_name(name)
-    self.all.select do |song|
+    self.all.detect do |song|
       song.name == name
     end
   end
@@ -91,8 +92,11 @@ class Song
     artist = Artist.find_or_create_by_name(new_song[0])
     genre = Genre.find_or_create_by_name(new_song[2])
     song = self.new(new_song[1], artist, genre)
-    
-    
+  end
+  
+  def self.create_from_filename(filename)
+    obj = self.new_from_filename(filename)
+    @@all << obj
   end
     
 end
@@ -119,9 +123,10 @@ class Artist
   end
   
   def self.create(name)
-    self.new(name).save
-    self
-  end
+    obj = self.new(name)
+    obj.save
+    obj
+  end 
   
   def self.destroy_all
     @@all.clear
@@ -171,8 +176,9 @@ class Genre
   end
   
   def self.create(name)
-    self.new(name).save
-    self
+    obj = self.new(name)
+    obj.save
+    obj
   end
   
   def self.destroy_all
@@ -205,7 +211,47 @@ class MusicImporter
   def files
     Dir.children(@path)
   end
+  
+  def import
+    files.each do |song|
+      Song.create_from_filename(song)
+    end
+  end
+end
+
+
+class MusicLibraryController
+  
+  def initialize(path = "./db/mp3s")
+      obj = MusicImporter.new(path)
+      obj.import
+  end
+  
+  def call
+      puts "Welcome to your music library!"
+      puts "To list all of your songs, enter 'list songs'."
+      puts "To list all of the artists in your library, enter 'list artists'."
+      puts "To list all of the genres in your library, enter 'list genres'."
+      puts "To list all of the songs by a particular artist, enter 'list artist'."
+      puts "To list all of the songs of a particular genre, enter 'list genre'."
+      puts "To play a song, enter 'play song'."
+      puts "To quit, type 'exit'."
+      puts "What would you like to do?"
+      input = ""
+      until input == "exit"
+        input = gets.chomp
+      end
     
+  end
+  
+  def list_songs
+    num = 1
+    Song.all.each do |song|
+      puts "#{num}. #{song}"
+      num += 1
+    end
+  end
+  
   
   
   
