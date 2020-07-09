@@ -307,7 +307,8 @@ class MusicLibraryController
     input_new = input.to_i
     input_new -= 1
     songs = list_songs
-    selected_song = songs[0][input_new]
+    selected_song = songs[input_new]
+    binding.pry
     puts "Playing #{selected_song.name} by #{selected_song.artist.name}"
   end
   
