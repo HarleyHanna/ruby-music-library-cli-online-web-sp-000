@@ -305,7 +305,7 @@ class MusicLibraryController
     input = gets
     input_new = input.to_i
     input_new -= 1
-    songs = list_songs
+    songs = Song.all.sort_by {|song| song.name}
     selected_song = songs[input_new]
     puts "Playing by"
   end
