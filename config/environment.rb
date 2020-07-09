@@ -224,7 +224,7 @@ class MusicLibraryController
   
   def initialize(path = "./db/mp3s")
       obj = MusicImporter.new(path)
-      obj.import
+      @songs = obj.import
   end
   
   def call
@@ -246,7 +246,7 @@ class MusicLibraryController
   
   def list_songs
     num = 1
-    Song.all.each do |song|
+    @songs.each do |song|
       puts "#{num}. #{song}"
       num += 1
     end
