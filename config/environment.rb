@@ -275,7 +275,8 @@ class MusicLibraryController
     puts "Please enter the name of an artist:"
     input = gets.chomp
     if Artist.find_by_name(input) != nil
-      sorted = input.songs.sort_by {|song| song.name}
+      artist = Artist.find_by_name(input)
+      sorted = artist.songs.sort_by {|song| song.name}
         sorted.each do |song|
         puts "#{num}. #{song.name}"
       end
