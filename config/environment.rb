@@ -303,7 +303,7 @@ class MusicLibraryController
   
   def play_song
     puts "Which song number would you like to play?"
-    input = gets.chomp
+    input = gets
     input_new = input.to_i
     input_new -= 1
     songs = list_songs
