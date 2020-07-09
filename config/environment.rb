@@ -279,7 +279,7 @@ class MusicLibraryController
       artist = Artist.find_by_name(input)
       sorted = artist.songs.sort_by {|song| song.name}
         sorted.each do |song|
-        puts "#{num}. #{song.name} - #{song.genre}"
+        puts "#{num}. #{song.name} - #{song.genre.name}"
         num += 1
       end
     end
