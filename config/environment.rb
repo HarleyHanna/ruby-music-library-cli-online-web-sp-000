@@ -251,6 +251,7 @@ class MusicLibraryController
       puts "#{num}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
       num += 1
     end
+    sorted
   end
   
   def list_artists
@@ -302,7 +303,8 @@ class MusicLibraryController
   def play_song
     puts "Which song number would you like to play?"
     input = gets.chomp
-    puts "Playing #{list_songs[input.to_i]}"
+    selected_song = list_songs[input.to_i]
+    puts "Playing #{selected_song.name} by #{selected_song.artist.name}"
   end
   
   
