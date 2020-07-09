@@ -252,7 +252,6 @@ class MusicLibraryController
       puts "#{num}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
       num += 1
     end
-    sorted
   end
   
   def list_artists
