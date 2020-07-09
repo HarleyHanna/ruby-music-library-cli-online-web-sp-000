@@ -278,6 +278,7 @@ class MusicLibraryController
       sorted = input.songs.sort_by {|song| song.name}
         sorted.each do |song|
         puts "#{num}. #{song.name}"
+      end
     end
   end
   
