@@ -286,7 +286,7 @@ class MusicLibraryController
   end
   
   def list_songs_by_genre
-    puts "Please enter the name of an genre:"
+    puts "Please enter the name of a genre:"
     num = 1
     input = gets.chomp
     if Genre.find_by_name(input) != nil
