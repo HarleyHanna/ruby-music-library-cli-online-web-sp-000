@@ -304,7 +304,7 @@ class MusicLibraryController
     puts "Which song number would you like to play?"
     songs = Song.all.sort_by {|song| song.name}
     input = gets
-    if input_new > songs.length
+    if input > songs.length
       nil
     else
       input_new = input.to_i
