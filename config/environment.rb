@@ -253,6 +253,15 @@ class MusicLibraryController
     end
   end
   
+  def list_artists
+    num = 1
+    sorted = Artist.all.sort
+    sorted.each do |song|
+      puts "#{num}. #{artist.name}"
+      num += 1
+    end
+  end
+  
   
   
   
