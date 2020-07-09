@@ -305,9 +305,7 @@ class MusicLibraryController
     songs = Song.all.sort_by {|song| song.name}
     input = gets
     input_new = input.to_i
-    if input_new > songs.length
-      nil
-    else
+    if input_new.between?(1, input_new)
       input_new -= 1
       selected_song = songs[input_new]
       if selected_song != nil
