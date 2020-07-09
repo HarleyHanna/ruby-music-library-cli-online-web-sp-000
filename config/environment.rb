@@ -311,7 +311,6 @@ class MusicLibraryController
     else
       selected_song = songs[input_new]
       puts "Playing #{selected_song.name} by #{selected_song.artist.name}"
-    end
   end
   
   
