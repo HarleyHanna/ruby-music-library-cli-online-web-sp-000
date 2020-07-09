@@ -306,7 +306,7 @@ class MusicLibraryController
     input_new = input.to_i
     input_new -= 1
     songs = Song.all.sort_by {|song| song.name}
-    selected_song = song[input_new]
+    selected_song = songs[input_new]
     puts "Playing #{selected_song.name} by #{selected_song.artist.name}"
   end
   
