@@ -307,9 +307,9 @@ class MusicLibraryController
     input_new -= 1
     songs = Song.all.sort_by {|song| song.name}
     selected_song = songs[input_new]
-      if selected_song != nil
-        puts "Playing #{selected_song.name} by #{selected_song.artist.name}"
-      end
+    if selected_song != nil
+      puts "Playing #{selected_song.name} by #{selected_song.artist.name}"
+    end
   end
   
   
