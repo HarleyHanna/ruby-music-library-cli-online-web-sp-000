@@ -274,6 +274,10 @@ class MusicLibraryController
   def list_songs_by_artist
     puts "Please enter the name of an artist:"
     input = gets.chomp
+    sorted = input.songs.sort_by {|song| song.name}
+    sorted.each do |song|
+      puts "#{num}. #{song.name}"
+    end
   end
   
   
