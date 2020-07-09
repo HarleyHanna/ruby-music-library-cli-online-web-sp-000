@@ -247,7 +247,7 @@ class MusicLibraryController
   def list_songs
     num = 1
     @songs.each do |song|
-      puts "#{num}. #{song}"
+      puts "#{num}. #{song.slice! ".mp3"}"
       num += 1
     end
   end
