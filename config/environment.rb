@@ -246,8 +246,8 @@ class MusicLibraryController
   
   def list_songs
     num = 1
-    Song.all.sort_by 
-    Song.all.each do |song|
+    sorted = Song.all.sort_by {|song| song.name}
+    sorted.each do |song|
       puts "#{num}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
       num += 1
     end
